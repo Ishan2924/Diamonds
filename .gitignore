@@ -1,0 +1,12 @@
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Processed data outputs
+processed_diamond_features_X_multi_modal.csv
+processed_diamond_features_X.csv
+diamond_target_y.csv
+diamond_target_y_multi_model.csv
+diamond_with_image_path.csv
+
+# Saved models and pipelines
+*.joblib
