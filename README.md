@@ -1,4 +1,4 @@
-Diamond Price Predictor (Multimodal)
+**Diamond Price Predictor (Multimodal)**
 This project implements a sophisticated Diamond Price Predictor web application using Flask, capable of estimating diamond prices based on either tabular features alone or a combination of tabular features and a diamond image. It leverages a multimodal machine learning approach with a custom image feature extractor and a robust stacked regressor model.
 
 ✨ Features
