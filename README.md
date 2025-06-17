@@ -28,7 +28,8 @@ This project implements a sophisticated Diamond Price Predictor web application 
 * **Package Management:** `pip`
 * **Version Control:** `Git` / `GitHub`
 
-*(Full list of dependencies available in `requirements.txt`)*
+*(Full list of dependencies ava![opt2](https://github.com/user-attachments/assets/fd942ee0-fb5d-45e4-a199-ba0e3afcb070)
+ilable in `requirements.txt`)*
 
 ## Project Structure
 
@@ -137,11 +138,12 @@ This project presented several common machine learning and deployment challenges
 
 ![choice](https://github.com/user-attachments/assets/42b3270a-e51d-4870-9c77-0d9f45b118d7)
 
-![opt2](https://github.com/user-attachments/assets/3f090499-da13-4571-93bc-b9ee0a6a5af8)
+![opt2](https://github.com/user-attachments/assets/14cbeac8-d60e-4cc3-be58-83ec933ed86e)
 
 ![ans2](https://github.com/user-attachments/assets/25cc2d56-ff01-47fd-be40-c4fa7b7ac0da)
 
 ![opt1](https://github.com/user-attachments/assets/3f81038e-963d-4459-b72c-fd221004d72f)
 
 ![ans1](https://github.com/user-attachments/assets/3b71e46e-4680-4c72-8b9b-47c598027543)
+
 
