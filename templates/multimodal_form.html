@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Price Predictor With Image</title>
+    <!-- Tailwind CSS CDN for rapid styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #F9FAFB 0%, #EFF4F6 100%);
+        }
+        .text-gradient-main {
+            background-image: linear-gradient(to right, #2EA69E, #3AAFA9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gradient {
+            background-image: linear-gradient(to right, #3AAFA9, #2EA69E);
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background-image: linear-gradient(to right, #2EA69E, #3AAFA9);
+        }
+        .card-shadow {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        .input-focus-ring:focus {
+            outline: none;
+            border-color: #3AAFA9;
+            box-shadow: 0 0 0 3px rgba(58, 175, 169, 0.4); /* Soft accent focus ring */
+        }
+        .file-input-button {
+            background-color: #3AAFA9; /* Base color for file input button */
+            transition: background-color 0.3s ease-in-out;
+        }
+        .file-input-button:hover {
+            background-color: #2EA69E; /* Darker on hover */
+        }
+        .result-success {
+            background-color: #D4EDDA; /* Light green */
+            border-color: #A3D9B6;     /* Green border */
+            color: #155724;          /* Dark green text */
+        }
+        .result-error {
+            background-color: #F8D7DA; /* Light red */
+            border-color: #F5C6CB;     /* Red border */
+            color: #721C24;          /* Dark red text */
+        }
+        .result-info {
+            background-color: #E2E3E5; /* Light gray */
+            border-color: #D6D8DB;     /* Gray border */
+            color: #383D41;          /* Dark gray text */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center p-4">
+    <div class="bg-white rounded-3xl card-shadow p-8 md:p-12 max-w-4xl w-full my-8 border border-gray-100 transform transition-transform duration-300 hover:scale-[1.005]">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gradient-main mb-6 text-center">Diamond Price Predictor</h1>
+        <h2 class="text-2xl md:text-3xl font-semibold text-gray-700 mb-8 text-center">Enter Data and Upload Image</h2>
+
+        <form id="multimodalPredictForm" action="/predict_multimodal" method="post" enctype="multipart/form-data" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="form-group">
+                    <label for="Weight" class="block text-gray-700 text-sm font-bold mb-2">Weight:</label>
+                    <input type="number" id="Weight" name="Weight" step="0.01" required value="1.0"
+                           class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight input-focus-ring">
+                </div>
+                <div class="form-group">
+                    <label for="X" class="block text-gray-700 text-sm font-bold mb-2">Length:</label>
+                    <input type="number" id="X" name="X" step="0.01" required value="6.5"
+                           class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight input-focus-ring">
+                </div>
+                <div class="form-group">
+                    <label for="Y" class="block text-gray-700 text-sm font-bold mb-2">Width:</label>
+                    <input type="number" id="Y" name="Y" step="0.01" required value="6.5"
+                           class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight input-focus-ring">
+                </div>
+                <div class="form-group">
+                    <label for="Z" class="block text-gray-700 text-sm font-bold mb-2">Depth:</label>
+                    <input type="number" id="Z" name="Z" step="0.01" required value="4.0"
+                           class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight input-focus-ring">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="form-group">
+                    <label for="Cut" class="block text-gray-700 text-sm font-bold mb-2">Cut:</label>
+                    <select id="Cut" name="Cut" required
+                            class="shadow-sm border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight input-focus-ring">
+                        <option value="EX">Excellent</option>
+                        <option value="VG">Very Good</option>
+                        <option value="G">Good</option>
+                        <option value="F">Fair</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Polish" class="block text-gray-700 text-sm font-bold mb-2">Polish:</label>
+                    <select id="Polish" name="Polish" required
+                            class="shadow-sm border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight input-focus-ring">
+                        <option value="EX">Excellent</option>
+                        <option value="VG">Very Good</option>
+                        <option value="G">Good</option>
+                        <option value="F">Fair</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Symmetry" class="block text-gray-700 text-sm font-bold mb-2">Symmetry:</label>
+                    <select id="Symmetry" name="Symmetry" required
+                            class="shadow-sm border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight input-focus-ring">
+                        <option value="EX">Excellent</option>
+                        <option value="VG">Very Good</option>
+                        <option value="G">Good</option>
+                        <option value="F">Fair</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Clarity" class="block text-gray-700 text-sm font-bold mb-2">Clarity:</label>
+                    <select id="Clarity" name="Clarity" required
+                            class="shadow-sm border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight input-focus-ring">
+                        <option value="IF">Internally Flawless</option>
+                        <option value="VVS1">Very Very Slightly Included 1</option>
+                        <option value="VVS2">Very Very Slightly Included 2</option>
+                        <option value="VS1">Very Slightly Included 1</option>
+                        <option value="VS2">Very Slightly Included 2</option>
+                        <option value="SI1">Slightly Included 1</option>
+                        <option value="SI2">Slightly Included 2</option>
+                        <option value="I1">Included 1</option>
+                        <option value="I2">Included 2</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="form-group">
+                    <label for="Colour" class="block text-gray-700 text-sm font-bold mb-2">Colour:</label>
+                    <select id="Colour" name="Colour" required
+                            class="shadow-sm border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight input-focus-ring">
+                        <option value="D">D (Colorless)</option>
+                        <option value="E">E (Colorless)</option>
+                        <option value="F">F (Colorless)</option>
+                        <option value="G">G (Near Colorless)</option>
+                        <option value="H">H (Near Colorless)</option>
+                        <option value="I">I (Near Colorless)</option>
+                        <option value="J">J (Near Colorless)</option>
+                        <option value="K">K (Faint Yellow)</option>
+                        <option value="L">L (Faint Yellow)</option>
+                        <option value="M">M (Very Light Yellow)</option>
+                        <option value="N">N (Very Light Yellow)</option>
+                        <option value="O-P">O-P (Light Yellow)</option>
+                        <option value="Q-R">Q-R (Light Yellow)</option>
+                        <option value="S-T">S-T (Fancy Light Yellow)</option>
+                        <option value="U-V">U-V (Fancy Yellow)</option>
+                        <option value="W-X">W-X (Fancy Yellow)</option>
+                        <option value="Y-Z">Y-Z (Fancy Yellow)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Fluorescence" class="block text-gray-700 text-sm font-bold mb-2">Fluorescence:</label>
+                    <select id="Fluorescence" name="Fluorescence" required
+                            class="shadow-sm border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight input-focus-ring">
+                        <option value="N">None</option>
+                        <option value="F">Faint</option>
+                        <option value="M">Medium</option>
+                        <option value="S">Strong</option>
+                        <option value="VS">Very Strong</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Shape" class="block text-gray-700 text-sm font-bold mb-2">Shape:</label>
+                    <select id="Shape" name="Shape" required
+                            class="shadow-sm border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight input-focus-ring">
+                        <option value="Round">Round</option>
+                        <option value="Oval">Oval</option>
+                        <option value="Pear">Pear</option>
+                        <option value="Princess">Princess</option>
+                        <option value="Emerald">Emerald</option>
+                        <option value="Marquise">Marquise</option>
+                        <option value="Radiant">Radiant</option>
+                        <option value="Cushion">Cushion</option>
+                        <option value="Heart">Heart</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Colour_IsFancy" class="block text-gray-700 text-sm font-bold mb-2">Fancy Colour:</label>
+                    <select id="Colour_IsFancy" name="Colour_IsFancy" required
+                            class="shadow-sm border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight input-focus-ring">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group col-span-full">
+                <label for="image_upload" class="block text-gray-700 text-sm font-bold mb-2">Upload Diamond Image:</label>
+                <input type="file" id="image_upload" name="image" accept="image/*" required
+                       class="block w-full text-sm text-gray-500
+                       file:mr-4 file:py-2 file:px-4
+                       file:rounded-full file:border-0
+                       file:text-sm file:font-semibold
+                       file:bg-gray-100 file:text-gray-700
+                       hover:file:bg-gray-200 cursor-pointer transition-colors duration-300">
+            </div>
+
+            <button type="submit"
+                    class="w-full btn-gradient text-white font-bold py-3 px-4 rounded-xl shadow-md focus:outline-none transition duration-300 ease-in-out transform hover:scale-105">
+                Predict Multimodal Price
+            </button>
+        </form>
+
+        <div id="multimodalResult" class="prediction-result mt-8 p-4 rounded-xl text-lg font-semibold text-center hidden result-info"></div>
+
+        <script>
+            document.getElementById('multimodalPredictForm').addEventListener('submit', async function(event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+                const resultDiv = document.getElementById('multimodalResult');
+                resultDiv.classList.remove('hidden', 'result-success', 'result-error');
+                resultDiv.classList.add('result-info');
+                resultDiv.innerHTML = 'Predicting...';
+
+                try {
+                    const response = await fetch('/predict_multimodal', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await response.json();
+                    if (response.ok) {
+                        resultDiv.innerHTML = `Predicted Price (Multimodal): <span class="text-gradient-main font-extrabold">$${data.predicted_price.toFixed(2)}</span>`;
+                        resultDiv.classList.remove('result-info', 'result-error');
+                        resultDiv.classList.add('result-success');
+                    } else {
+                        resultDiv.innerHTML = `Error: ${data.error || 'Unknown error'}. ${data.details || ''}`;
+                        resultDiv.classList.remove('result-info', 'result-success');
+                        resultDiv.classList.add('result-error');
+                    }
+                } catch (error) {
+                    resultDiv.innerHTML = `An unexpected error occurred: ${error.message}`;
+                    resultDiv.classList.remove('result-info', 'result-success');
+                    resultDiv.classList.add('result-error');
+                }
+            });
+        </script>
+    </div>
+    <div class="text-center mt-8 mb-4">
+        <a href="{{ url_for('index') }}" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out">
+            &larr; Back to Choices
+        </a>
+    </div>
+</body>
+</html>

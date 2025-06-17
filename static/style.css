@@ -1,0 +1,38 @@
+/* General Body Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Background gradient applied via Tailwind class 'bg-gradient-body' in HTML <style> */
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prediction Result Div classes for different states */
+.prediction-result {
+    transition: all 0.3s ease-in-out;
+}
+
+.prediction-result.hidden {
+    display: none;
+}
+
+.prediction-result.result-success {
+    background-color: #D4EDDA; /* Light green */
+    border: 1px solid #A3D9B6; /* Green border */
+    color: #155724; /* Dark green text */
+}
+
+.prediction-result.result-error {
+    background-color: #F8D7DA; /* Light red */
+    border: 1px solid #F5C6CB; /* Red border */
+    color: #721C24; /* Dark red text */
+}
+
+.prediction-result.result-info {
+    background-color: #E2E3E5; /* Light gray for "Predicting..." */
+    border: 1px solid #D6D8DB; /* Gray border */
+    color: #383D41; /* Dark gray text */
+}
+

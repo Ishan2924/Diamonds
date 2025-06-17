@@ -10,3 +10,5 @@ diamond_with_image_path.csv
 
 # Saved models and pipelines
 *.joblib
+
+venv/
