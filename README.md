@@ -28,8 +28,7 @@ This project implements a sophisticated Diamond Price Predictor web application 
 * **Package Management:** `pip`
 * **Version Control:** `Git` / `GitHub`
 
-*(Full list of dependencies ava![opt2](https://github.com/user-attachments/assets/fd942ee0-fb5d-45e4-a199-ba0e3afcb070)
-ilable in `requirements.txt`)*
+*(Full list of dependencies available in `requirements.txt`)*
 
 ## Project Structure
 
