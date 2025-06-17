@@ -32,6 +32,7 @@ This project implements a sophisticated Diamond Price Predictor web application 
 
 ## Project Structure
 
+```
 Diamond/
 ├── app.py
 ├── utils.py
@@ -47,7 +48,7 @@ Diamond/
 │   └── multimodal_form.html
 └── static/
     └── style.css
-
+```
 ## Setup and Run Locally
 
 Follow these steps to get the project up and running on your local machine:
