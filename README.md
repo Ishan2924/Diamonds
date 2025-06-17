@@ -133,6 +133,8 @@ This project presented several common machine learning and deployment challenges
 
 * **Deployment to Cloud:** Deploy the Flask application to a cloud platform (e.g., Google Cloud Run, AWS Elastic Beanstalk) for public access.
 
+# Output
+
 ![choice](https://github.com/user-attachments/assets/42b3270a-e51d-4870-9c77-0d9f45b118d7)
 
 ![opt2](https://github.com/user-attachments/assets/3f090499-da13-4571-93bc-b9ee0a6a5af8)
