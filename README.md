@@ -33,21 +33,20 @@ This project implements a sophisticated Diamond Price Predictor web application 
 ## Project Structure
 
 Diamond/
-├── app.py                     # Flask application main file
-├── utils.py                   # Contains ImageFeatureExtractor and preprocessing transformers
-├── requirements.txt           # Python dependencies
-├── .gitignore                 # Specifies files/folders to ignore (e.g., venv/)
-├── full_preprocessing_pipeline.joblib       # Tabular-only preprocessing pipeline
-├── Tabular_XGBoost_model.joblib             # Tabular-only trained model
-├── full_multi_modal_preprocessing_pipeline.joblib # Multimodal preprocessing pipeline (includes image path handling)
-├── XGBoost_model.joblib                     # Multimodal trained model (XGB Regressor)
-├── Stacked_model.joblib                     # Multimodal trained model (XGB Regressor)
-├── templates/                 # HTML templates for Flask
-│   ├── choice.html            # Landing page for input method selection
-│   ├── tabular_form.html      # Form for tabular-only input
-│   └── multimodal_form.html   # Form for tabular + image input
-└── static/                    # Static assets like CSS
-└── style.css              # Custom CSS styles
+├── app.py
+├── utils.py
+├── requirements.txt
+├── .gitignore
+├── full_preprocessing_pipeline.joblib
+├── Tabular_XGBoost_model.joblib
+├── full_multi_modal_preprocessing_pipeline.joblib
+├── XGBoost_model.joblib
+├── templates/
+│   ├── choice.html
+│   ├── tabular_form.html
+│   └── multimodal_form.html
+└── static/
+    └── style.css
 
 ## Setup and Run Locally
 
