@@ -42,6 +42,7 @@ Diamond/
 ├── Tabular_XGBoost_model.joblib
 ├── full_multi_modal_preprocessing_pipeline.joblib
 ├── XGBoost_model.joblib
+├── Stacked_model.joblib
 ├── templates/
 │   ├── choice.html
 │   ├── tabular_form.html
