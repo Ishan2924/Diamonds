@@ -1,4 +1,17 @@
-# Diamond Price Predictor (Multimodal)
+# Diamond Price Predictor
+
+# Output
+
+![choice](https://github.com/user-attachments/assets/42b3270a-e51d-4870-9c77-0d9f45b118d7)
+
+![opt2](https://github.com/user-attachments/assets/14cbeac8-d60e-4cc3-be58-83ec933ed86e)
+
+![ans2](https://github.com/user-attachments/assets/25cc2d56-ff01-47fd-be40-c4fa7b7ac0da)
+
+![opt1](https://github.com/user-attachments/assets/3f81038e-963d-4459-b72c-fd221004d72f)
+
+![ans1](https://github.com/user-attachments/assets/3b71e46e-4680-4c72-8b9b-47c598027543)
+
 
 This project implements a sophisticated Diamond Price Predictor web application using Flask, capable of estimating diamond prices based on either **tabular features alone** or a **combination of tabular features and a diamond image**. It leverages a multimodal machine learning approach with a custom image feature extractor and a robust stacked regressor model.
 
@@ -133,16 +146,5 @@ This project presented several common machine learning and deployment challenges
 
 * **Deployment to Cloud:** Deploy the Flask application to a cloud platform (e.g., Google Cloud Run, AWS Elastic Beanstalk) for public access.
 
-# Output
-
-![choice](https://github.com/user-attachments/assets/42b3270a-e51d-4870-9c77-0d9f45b118d7)
-
-![opt2](https://github.com/user-attachments/assets/14cbeac8-d60e-4cc3-be58-83ec933ed86e)
-
-![ans2](https://github.com/user-attachments/assets/25cc2d56-ff01-47fd-be40-c4fa7b7ac0da)
-
-![opt1](https://github.com/user-attachments/assets/3f81038e-963d-4459-b72c-fd221004d72f)
-
-![ans1](https://github.com/user-attachments/assets/3b71e46e-4680-4c72-8b9b-47c598027543)
 
 
